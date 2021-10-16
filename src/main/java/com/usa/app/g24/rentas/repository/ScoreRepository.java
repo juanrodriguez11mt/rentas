@@ -1,6 +1,6 @@
 package com.usa.app.g24.rentas.repository;
 
-import com.usa.app.g24.rentas.model.Gama;
+import com.usa.app.g24.rentas.model.Score;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
  * @author 57315
  */
 @Repository
-public interface GamaRepository extends CrudRepository <Gama, Integer> {
-    
-    Gama findByName(String name);
+public interface ScoreRepository extends CrudRepository <Score, Integer> {
     
 }

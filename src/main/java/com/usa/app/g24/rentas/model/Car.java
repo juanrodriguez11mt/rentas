@@ -2,6 +2,7 @@ package com.usa.app.g24.rentas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -41,6 +43,14 @@ public class Car implements Serializable {
     @JoinColumn(name = "idGama", nullable = false)
     @JsonIgnoreProperties("cars")
     private Gama gama;
+    
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"car", "client"})
+    private List<Message> messages;
+    
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"car", "messages"})
+    private List<Reservation> reservations;
 
     public Car() {
     }
@@ -100,6 +110,22 @@ public class Car implements Serializable {
 
     public void setGama(Gama gama) {
         this.gama = gama;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
     
 }

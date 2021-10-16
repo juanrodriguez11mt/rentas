@@ -24,7 +24,7 @@ public class Gama implements Serializable {
     @Column(name = "idGama", scale = 11)
     private Integer idGama;
     
-    @Column(name = "name", length = 45, nullable = false)
+    @Column(name = "name", length = 45, nullable = false, unique = true)
     private String name;
     
     @Column(name = "description", length = 250, nullable = false)

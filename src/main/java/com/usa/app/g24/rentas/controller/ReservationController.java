@@ -1,8 +1,8 @@
 package com.usa.app.g24.rentas.controller;
 
-import com.usa.app.g24.rentas.dto.CarRequest;
-import com.usa.app.g24.rentas.model.Car;
-import com.usa.app.g24.rentas.service.CarService;
+import com.usa.app.g24.rentas.dto.ReservationRequest;
+import com.usa.app.g24.rentas.model.Reservation;
+import com.usa.app.g24.rentas.service.ReservationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 57315
  */
 @RestController
-@RequestMapping("Car")
-public class CarController {
+@RequestMapping("Reservation")
+public class ReservationController {
     
     @Autowired
-    private CarService carService;
+    private ReservationService service;
     
     @PostMapping("save")
-    public ResponseEntity<?> guardar(@RequestBody CarRequest request) {
+    public ResponseEntity<?> guardar(@RequestBody ReservationRequest request) {
         try {
-            carService.guardar(request);
+            service.guardar(request);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -35,8 +35,7 @@ public class CarController {
     }
     
     @GetMapping("all")
-    public List<Car> listaDeCarros() {
-        return carService.lista();
+    public List<Reservation> listaDeGamas() {
+        return service.lista();
     }
-    
 }

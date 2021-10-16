@@ -17,13 +17,30 @@ public class GamaService {
     @Autowired
     private GamaRepository gamaRepository;
     
-    public void guarar(GamaRequest request) {
+    public void guardar(GamaRequest request) throws Exception {
+        if (existeGama(request.getName())) {
+            throw new Exception("Gama ya existe");
+        }
+        
         Gama gama = new Gama(null, request.getName(), request.getDescription());
         gamaRepository.save(gama);
     }
     
     public List<Gama> lista() {
         return (List) gamaRepository.findAll();
+    }
+    
+    public Gama gamaPorId(Integer id) {
+        return gamaRepository.findById(id).orElse(null);
+    }
+    
+    private boolean existeGama(String nombre) {
+        Gama gama = gamaRepository.findByName(nombre);
+        if (gama == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
     
 }
