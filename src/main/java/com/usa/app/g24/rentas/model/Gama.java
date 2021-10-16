@@ -1,11 +1,14 @@
 package com.usa.app.g24.rentas.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -13,19 +16,22 @@ import javax.persistence.Table;
  * @author 57315
  */
 @Entity
-@Table("Gama")
+@Table(name = "Gama")
 public class Gama implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idGama", length = 11)
+    @Column(name = "idGama", scale = 11)
     private Integer idGama;
     
-    @Column(name = "name", length = 45)
+    @Column(name = "name", length = 45, nullable = false)
     private String name;
     
-    @Column(name = "description", length = 250)
+    @Column(name = "description", length = 250, nullable = false)
     private String description;
+    
+    @OneToMany(mappedBy = "gama", fetch = FetchType.LAZY)
+    private List<Car> cars;
 
     public Gama() {
     }
@@ -34,6 +40,13 @@ public class Gama implements Serializable {
         this.idGama = idGama;
         this.name = name;
         this.description = description;
+    }
+
+    public Gama(Integer idGama, String name, String description, List<Car> cars) {
+        this.idGama = idGama;
+        this.name = name;
+        this.description = description;
+        this.cars = cars;
     }
 
     public Integer getIdGama() {
@@ -58,6 +71,14 @@ public class Gama implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
     
 }
