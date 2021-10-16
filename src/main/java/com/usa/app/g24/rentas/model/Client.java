@@ -25,14 +25,14 @@ public class Client implements Serializable {
     @Column(name = "idClient", scale = 11)
     private Integer idClient;
     
-    @Column(name = "name", length = 250, nullable = false)
-    private String name;
-    
     @Column(name = "email", length = 45, nullable = false, unique = true)
     private String email;
     
     @Column(name = "password", length = 45, nullable = false)
     private String password;
+    
+    @Column(name = "name", length = 250, nullable = false)
+    private String name;
     
     @Column(name = "age", precision = 4, scale = 3, nullable = false)
     private Integer age;

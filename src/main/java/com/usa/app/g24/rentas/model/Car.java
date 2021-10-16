@@ -33,11 +33,11 @@ public class Car implements Serializable {
     @Column(name = "brand", length = 45, nullable = false)
     private String brand;
     
-    @Column(name = "description", length = 250, nullable = false)
-    private String description;
-    
     @Column(name = "year", precision = 4, nullable = false)
     private Integer year;
+    
+    @Column(name = "description", length = 250, nullable = false)
+    private String description;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idGama", nullable = false)
