@@ -5,7 +5,7 @@ import com.usa.app.g24.rentas.model.Car;
 import com.usa.app.g24.rentas.model.Client;
 import com.usa.app.g24.rentas.model.Reservation;
 import com.usa.app.g24.rentas.repository.ReservationRepository;
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +30,8 @@ public class ReservationService {
         Car car = carService.obtenerPorId(request.getCar().getIdCar());
         Client client = clientService.obtenerPorId(request.getClient().getIdClient());
         
-        Reservation reservation = new Reservation(null, 
-                request.getStartDate().atStartOfDay(), request.getDevolutionDate().atStartOfDay(), 
-                "created", car, client, null);
+        Reservation reservation = new Reservation(null, Date.valueOf(request.getStartDate()), 
+                Date.valueOf(request.getDevolutionDate()), "created", car, client, null);
         
         repository.save(reservation);
     }

@@ -2,7 +2,7 @@ package com.usa.app.g24.rentas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,10 +29,10 @@ public class Reservation implements Serializable {
     private Integer idReservation;
     
     @Column(name = "startDate", nullable = false)
-    private LocalDateTime startDate;
+    private Date startDate;
     
     @Column(name = "devolutionDate", nullable = false)
-    private LocalDateTime devolutionDate;
+    private Date devolutionDate;
     
     @JoinColumn(name = "status", nullable = false)
     private String status;
@@ -53,8 +53,8 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Integer idReservation, LocalDateTime startDate, 
-            LocalDateTime devolutionDate, String status, Car car, Client client, Score score) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate,
+            String status, Car car, Client client, Score score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
@@ -72,19 +72,19 @@ public class Reservation implements Serializable {
         this.idReservation = idReservation;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(LocalDateTime devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
