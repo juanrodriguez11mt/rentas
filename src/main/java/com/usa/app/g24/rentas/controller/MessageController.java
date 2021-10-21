@@ -27,6 +27,11 @@ public class MessageController {
     @Autowired
     private MessageService service;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody MessageRequest request) {
         try {
@@ -37,11 +42,20 @@ public class MessageController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Message> listaDeGamas() {
         return service.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class MessageController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody MessageRequest request) {
         try {
@@ -62,6 +81,11 @@ public class MessageController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Message obtenerPorId(@PathVariable("id") Integer id) {
         return service.obtenerPorId(id);

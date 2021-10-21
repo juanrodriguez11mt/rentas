@@ -27,6 +27,11 @@ public class CarController {
     @Autowired
     private CarService carService;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody CarRequest request) {
         try {
@@ -37,11 +42,20 @@ public class CarController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Car> listaDeCarros() {
         return carService.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class CarController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody CarRequest request) {
         try {
@@ -62,6 +81,11 @@ public class CarController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Car obtenerPorId(@PathVariable("id") Integer id) {
         return carService.obtenerPorId(id);

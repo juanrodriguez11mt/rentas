@@ -27,6 +27,11 @@ public class ReservationController {
     @Autowired
     private ReservationService service;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody ReservationRequest request) {
         try {
@@ -37,11 +42,20 @@ public class ReservationController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Reservation> listaDeGamas() {
         return service.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class ReservationController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody ReservationRequest request) {
         try {
@@ -62,11 +81,22 @@ public class ReservationController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Reservation obtenerPorId(@PathVariable("id") Integer id) {
         return service.obtenerPorId(id);
     }
     
+    /**
+     * 
+     * @param dateOne
+     * @param dateTwo
+     * @return 
+     */
     @GetMapping("report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationsReportDates(
             @PathVariable("dateOne") String dateOne, 

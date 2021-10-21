@@ -29,6 +29,11 @@ public class GamaController {
     @Autowired
     private GamaService gamaService;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody GamaRequest request) {
         try {
@@ -39,11 +44,20 @@ public class GamaController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Gama> listaDeGamas() {
         return gamaService.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -54,6 +68,11 @@ public class GamaController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody GamaRequest request) {
         try {
@@ -64,6 +83,11 @@ public class GamaController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Gama obtenerPorId(@PathVariable("id") Integer id) {
         return gamaService.obtenerPorId(id);

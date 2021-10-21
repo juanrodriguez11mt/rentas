@@ -27,6 +27,11 @@ public class AdminController {
     @Autowired
     private AdminService service;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody AdminRequest request) {
         try {
@@ -37,11 +42,20 @@ public class AdminController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Admin> listaDeGamas() {
         return service.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class AdminController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody AdminRequest request) {
         try {
@@ -62,6 +81,11 @@ public class AdminController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Admin obtenerPorId(@PathVariable("id") Integer id) {
         return service.obtenerPorId(id);

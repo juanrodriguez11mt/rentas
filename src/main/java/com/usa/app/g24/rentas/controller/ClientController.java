@@ -27,6 +27,11 @@ public class ClientController {
     @Autowired
     private ClientService service;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody ClientRequest request) {
         try {
@@ -37,11 +42,20 @@ public class ClientController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Client> listaDeGamas() {
         return service.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class ClientController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody  ClientRequest request) {
         try {
@@ -62,6 +81,11 @@ public class ClientController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Client obtenerPorId(@PathVariable("id") Integer id) {
         return service.obtenerPorId(id);

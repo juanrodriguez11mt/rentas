@@ -27,6 +27,11 @@ public class ScoreController {
     @Autowired
     private ScoreService service;
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PostMapping("save")
     public ResponseEntity<?> guardar(@RequestBody ScoreRequest request) {
         try {
@@ -37,11 +42,20 @@ public class ScoreController {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     @GetMapping("all")
     public List<Score> listaDeGamas() {
         return service.lista();
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -52,6 +66,11 @@ public class ScoreController {
         }
     }
     
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     @PutMapping("update")
     public ResponseEntity<?> actualizar(@RequestBody ScoreRequest request) {
         try {
@@ -62,6 +81,11 @@ public class ScoreController {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     @GetMapping("{id}")
     public Score obtenerPorId(@PathVariable("id") Integer id) {
         return service.obtenerPorId(id);
