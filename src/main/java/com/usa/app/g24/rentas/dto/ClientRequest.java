@@ -6,6 +6,7 @@ package com.usa.app.g24.rentas.dto;
  */
 public class ClientRequest {
     
+    private Integer idClient;
     private String name;
     private String email;
     private String password;
@@ -14,11 +15,21 @@ public class ClientRequest {
     public ClientRequest() {
     }
 
-    public ClientRequest(String name, String email, String password, Integer age) {
+    public ClientRequest(Integer idClient, String name, String email,
+            String password, Integer age) {
+        this.idClient = idClient;
         this.name = name;
         this.email = email;
         this.password = password;
         this.age = age;
+    }
+
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {

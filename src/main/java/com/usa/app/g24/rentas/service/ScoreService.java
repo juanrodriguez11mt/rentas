@@ -21,6 +21,10 @@ public class ScoreService {
     @Autowired
     private ReservationService reservationService;
     
+    /**
+     * 
+     * @param request 
+     */
     public void guardar(ScoreRequest request) {
         Reservation res = reservationService
                 .obtenerPorId(request.getReservation().getIdReservation());
@@ -31,8 +35,51 @@ public class ScoreService {
         repository.save(score);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public List<Score> lista() {
         return (List) repository.findAll();
+    }
+    
+    /**
+     * 
+     * @param id
+     * @throws Exception 
+     */
+    public void eliminar(Integer id) throws Exception {
+        Score entity = obtenerPorId(id);
+        if (entity == null) {
+            throw new Exception ("El elemento no existe");
+        }
+        this.repository.delete(entity);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public Score obtenerPorId(Integer id) {
+        return this.repository.findById(id).orElse(null);
+    }
+    
+    /**
+     * 
+     * @param request
+     * @throws Exception 
+     */
+    public void actualizar(ScoreRequest request) throws Exception {
+        Score entity = obtenerPorId(request.getIdScore());
+        if (entity == null) {
+            throw new Exception ("El elemento no existe");
+        }
+        
+        entity.setMessageText(request.getMessageText());
+        entity.setStars(request.getStars());
+        
+        repository.save(entity);
     }
     
 }

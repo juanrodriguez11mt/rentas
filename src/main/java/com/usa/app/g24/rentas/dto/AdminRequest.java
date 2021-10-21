@@ -6,6 +6,7 @@ package com.usa.app.g24.rentas.dto;
  */
 public class AdminRequest {
     
+    private Integer idAdmin;
     private String name;
     private String email;
     private String password;
@@ -13,10 +14,20 @@ public class AdminRequest {
     public AdminRequest() {
     }
 
-    public AdminRequest(String name, String email, String password) {
+    public AdminRequest(Integer idAdmin, String name,
+            String email, String password) {
+        this.idAdmin = idAdmin;
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public Integer getIdAdmin() {
+        return idAdmin;
+    }
+
+    public void setIdAdmin(Integer idAdmin) {
+        this.idAdmin = idAdmin;
     }
 
     public String getName() {

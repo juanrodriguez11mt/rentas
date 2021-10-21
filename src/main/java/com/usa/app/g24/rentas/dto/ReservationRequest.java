@@ -8,6 +8,7 @@ import java.time.LocalDate;
  */
 public class ReservationRequest {
     
+    private Integer idReservation;
     private LocalDate startDate;
     private LocalDate devolutionDate;
     private Client client;
@@ -16,12 +17,21 @@ public class ReservationRequest {
     public ReservationRequest() {
     }
 
-    public ReservationRequest(LocalDate startDate, LocalDate devolutionDate, 
-            Client client, Car car) {
+    public ReservationRequest(Integer idReservation, LocalDate startDate,
+            LocalDate devolutionDate, Client client, Car car) {
+        this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.client = client;
         this.car = car;
+    }
+
+    public Integer getIdReservation() {
+        return idReservation;
+    }
+
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public LocalDate getStartDate() {

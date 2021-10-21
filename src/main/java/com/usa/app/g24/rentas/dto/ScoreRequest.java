@@ -6,6 +6,7 @@ package com.usa.app.g24.rentas.dto;
  */
 public class ScoreRequest {
     
+    private Integer idScore;
     private String messageText;
     private Integer stars;
     private Reservation reservation;
@@ -13,10 +14,20 @@ public class ScoreRequest {
     public ScoreRequest() {
     }
 
-    public ScoreRequest(String messageText, Integer stars, Reservation reservation) {
+    public ScoreRequest(Integer idScore, String messageText, Integer stars,
+            Reservation reservation) {
+        this.idScore = idScore;
         this.messageText = messageText;
         this.stars = stars;
         this.reservation = reservation;
+    }
+
+    public Integer getIdScore() {
+        return idScore;
+    }
+
+    public void setIdScore(Integer idScore) {
+        this.idScore = idScore;
     }
 
     public String getMessageText() {

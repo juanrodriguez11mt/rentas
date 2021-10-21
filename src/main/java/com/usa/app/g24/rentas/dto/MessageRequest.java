@@ -6,6 +6,7 @@ package com.usa.app.g24.rentas.dto;
  */
 public class MessageRequest {
     
+    private Integer idMessage;
     private String messageText;
     private Client client;
     private Car car;
@@ -13,7 +14,9 @@ public class MessageRequest {
     public MessageRequest() {
     }
 
-    public MessageRequest(String messageText, Client client, Car car) {
+    public MessageRequest(Integer idMessage, String messageText,
+            Client client, Car car) {
+        this.idMessage = idMessage;
         this.messageText = messageText;
         this.client = client;
         this.car = car;
@@ -25,6 +28,14 @@ public class MessageRequest {
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
+    }
+
+    public Integer getIdMessage() {
+        return idMessage;
+    }
+
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public Client getClient() {

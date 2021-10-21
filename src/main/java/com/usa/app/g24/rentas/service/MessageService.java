@@ -34,12 +34,50 @@ public class MessageService {
         repository.save(message);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public List<Message> lista() {
         return (List) repository.findAll();
     }
     
+    /**
+     * 
+     * @param id
+     * @throws Exception 
+     */
+    public void eliminar(Integer id) throws Exception {
+        Message entity = obtenerPorId(id);
+        if (entity == null) {
+            throw new Exception ("El elemento no existe");
+        }
+        this.repository.delete(entity);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Message obtenerPorId(Integer id) {
-        return repository.findById(id).orElse(null);
+        return this.repository.findById(id).orElse(null);
+    }
+    
+    /**
+     * 
+     * @param request
+     * @throws Exception 
+     */
+    public void actualizar(MessageRequest request) throws Exception {
+        Message entity = obtenerPorId(request.getIdMessage());
+        if (entity == null) {
+            throw new Exception ("El elemento no existe");
+        }
+        
+        entity.setMessageText(request.getMessageText());
+        
+        repository.save(entity);
     }
     
 }

@@ -6,6 +6,7 @@ package com.usa.app.g24.rentas.dto;
  */
 public class CarRequest {
     
+    private Integer idCar;
     private String name;
     private String brand;
     private Integer year;
@@ -15,12 +16,22 @@ public class CarRequest {
     public CarRequest() {
     }
 
-    public CarRequest(String name, String brand, Integer year, String description, Gama gama) {
+    public CarRequest(Integer idCar, String name, String brand, Integer year, 
+            String description, Gama gama) {
+        this.idCar = idCar;
         this.name = name;
         this.brand = brand;
         this.year = year;
         this.description = description;
         this.gama = gama;
+    }
+
+    public Integer getIdCar() {
+        return idCar;
+    }
+
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
     }
 
     public String getName() {

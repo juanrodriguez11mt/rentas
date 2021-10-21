@@ -21,8 +21,13 @@ public class CarService {
     @Autowired
     private GamaService gamaService;
     
+    /**
+     * 
+     * @param request
+     * @throws Exception 
+     */
     public void guardar(CarRequest request) throws Exception {
-        Gama gama = gamaService.gamaPorId(request.getGama().getIdGama());
+        Gama gama = gamaService.obtenerPorId(request.getGama().getIdGama());
         if (gama == null) {
             throw new Exception ("El carro debe tener una gama dispobible");
         }
@@ -33,12 +38,60 @@ public class CarService {
         carRepository.save(car);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public List<Car> lista() {
         return (List) carRepository.findAll();
     }
     
+    /**
+     * 
+     * @param id
+     * @throws Exception 
+     */
+    public void eliminar(Integer id) throws Exception {
+        Car car = obtenerPorId(id);
+        if (car == null) {
+            throw new Exception ("El carro no existe");
+        }
+        
+        if (!car.getMessages().isEmpty() || 
+                !car.getReservations().isEmpty()) {
+            throw new Exception ("El carro tiene mensajes o reservas relacionadas");
+        }
+        
+        // Validar que el carro exista
+        this.carRepository.delete(car);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Car obtenerPorId(Integer id) {
         return this.carRepository.findById(id).orElse(null);
+    }
+    
+    /**
+     * 
+     * @param request
+     * @throws Exception 
+     */
+    public void actualizar(CarRequest request) throws Exception {
+        Car car = obtenerPorId(request.getIdCar());
+        if (car == null) {
+            throw new Exception ("El carro no existe");
+        }
+        
+        car.setName(request.getName());
+        car.setBrand(request.getBrand());
+        car.setYear(request.getYear());
+        car.setDescription(request.getDescription());
+        
+        carRepository.save(car);
     }
     
 }
