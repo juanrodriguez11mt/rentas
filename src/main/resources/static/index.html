@@ -6,23 +6,27 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <base href="/" />
-        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-        <script type="text/javascript" src="/webjars/jquery/jquery.min.js" ></script>
-        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script>
+        <link rel="stylesheet" type="text/css" href="/api/webjars/bootstrap/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/api/webjars/jquery/jquery.min.js" ></script>
+        <script type="text/javascript" src="/api/webjars/bootstrap/js/bootstrap.min.js" ></script>
     </head>
     <body>
-        <h1>#MisionTIC 2022</h1>
-        <div class="container unauthenticated">
-            <label>Para iniciar sesión con github haz click <a href="/oauth2/authorization/github">aquí</a></label>
+        <div class="container">
+            <h1>#MisionTIC 2022</h1>
+            <div class="unauthenticated">
+                <label>Para iniciar sesión con github haz click <a href="/api/oauth2/authorization/github">aquí</a></label>
+            </div>
+            <div class="authenticated" style="display: none;">
+                <label>Autenticado como: <strong id="user"></strong></label>
+            </div>
         </div>
-        <div class="container authenticated" style="display: none;">
-            <label>Autenticado como: <strong id="user"></strong></label>
-        </div>
-        <script>
-            $.get("/user", function(data) {
-                $("#user").html(data.name);
-                $(".unauthenticated").hide();
-                $(".authenticated").show();
+        <script  type="text/javascript">
+            $.get("/api/user", function(data) {
+                if (data && data.name != null) {
+                    $("#user").html(data.name);
+                    $(".unauthenticated").hide();
+                    $(".authenticated").show();
+                }
             });
         </script>
     </body>
