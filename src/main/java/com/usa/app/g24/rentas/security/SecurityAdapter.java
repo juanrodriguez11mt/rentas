@@ -21,8 +21,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                         "/", 
                         "/error", 
                         "/webjars/**", 
-                        "/oauth2/**",
-                        "**/webjars/**"
+                        "/oauth2/**"
                 ).permitAll()
                 .anyRequest().authenticated()
         ).exceptionHandling(e -> e
