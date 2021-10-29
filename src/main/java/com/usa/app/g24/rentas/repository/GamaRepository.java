@@ -11,6 +11,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GamaRepository extends CrudRepository <Gama, Integer> {
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     Gama findByName(String name);
     
 }

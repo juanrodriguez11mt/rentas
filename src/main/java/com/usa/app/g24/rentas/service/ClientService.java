@@ -97,4 +97,12 @@ public class ClientService {
         repository.save(entity);
     }
     
+    /**
+     * 
+     * @return 
+     */
+    public List<Client> getTopClients() {
+        return this.repository.getTopClients();
+    }
+    
 }

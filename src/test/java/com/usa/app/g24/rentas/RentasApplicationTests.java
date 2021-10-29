@@ -1,12 +1,12 @@
 package com.usa.app.g24.rentas;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class RentasApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 

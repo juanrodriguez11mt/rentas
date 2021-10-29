@@ -35,9 +35,19 @@ public class Score implements Serializable {
     @JsonIgnoreProperties("score")
     private Reservation reservation;
 
+    /**
+     *
+     */
     public Score() {
     }
 
+    /**
+     *
+     * @param idScore
+     * @param messageText
+     * @param stars
+     * @param reservation
+     */
     public Score(Integer idScore, String messageText, Integer stars, Reservation reservation) {
         this.idScore = idScore;
         this.messageText = messageText;
@@ -45,34 +55,66 @@ public class Score implements Serializable {
         this.reservation = reservation;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdScore() {
         return idScore;
     }
 
+    /**
+     *
+     * @param idScore
+     */
     public void setIdScore(Integer idScore) {
         this.idScore = idScore;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMessageText() {
         return messageText;
     }
 
+    /**
+     *
+     * @param messageText
+     */
     public void setMessageText(String messageText) {
         this.messageText = messageText;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getStars() {
         return stars;
     }
 
+    /**
+     *
+     * @param stars
+     */
     public void setStars(Integer stars) {
         this.stars = stars;
     }
 
+    /**
+     *
+     * @return
+     */
     public Reservation getReservation() {
         return reservation;
     }
 
+    /**
+     *
+     * @param reservation
+     */
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }

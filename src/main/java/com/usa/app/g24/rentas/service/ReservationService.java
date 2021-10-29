@@ -1,5 +1,6 @@
 package com.usa.app.g24.rentas.service;
 
+import com.usa.app.g24.rentas.dto.ReportClientsResponse;
 import com.usa.app.g24.rentas.dto.ReservationRequest;
 import com.usa.app.g24.rentas.model.Car;
 import com.usa.app.g24.rentas.model.Client;
@@ -9,7 +10,9 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +43,14 @@ public class ReservationService {
         Car car = carService.obtenerPorId(request.getCar().getIdCar());
         Client client = clientService.obtenerPorId(request.getClient().getIdClient());
         
+        String status = "crated";
+        
+        if (request.getStatus() != null && !request.getStatus().isEmpty()) {
+            status = request.getStatus();
+        }
+        
         Reservation reservation = new Reservation(null, fromLocalDateToDate(request.getStartDate()), 
-                fromLocalDateToDate(request.getDevolutionDate()), "created", car, client, null);
+                fromLocalDateToDate(request.getDevolutionDate()), status, car, client, null);
         
         repository.save(reservation);
     }
@@ -126,6 +135,44 @@ public class ReservationService {
      */
     private Date fromLocalDateToDate(LocalDate date) {
         return java.sql.Date.valueOf(date);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public Map<String, Integer> getReservationStatus() {
+        Map<String, Integer> reporte = new HashMap<>();
+        reporte.put("cancelled", 0);
+        reporte.put("completed", 0);
+        
+        List<Object[]> lista = this.repository.getReservationStatus();
+        
+        for (Object[] fila : lista) {
+            Long total = (Long) fila[0];
+            String estado = (String) fila[1];
+            
+            if (reporte.containsKey(estado)) {
+                reporte.replace(estado, total.intValue());
+            }
+        }
+        
+        return reporte;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public List<ReportClientsResponse> getReportClients() {
+        List<ReportClientsResponse> lista = new ArrayList<>();
+        List<Client> clientes = this.clientService.getTopClients();
+        
+        for (Client cliente : clientes) {
+            lista.add(new ReportClientsResponse(cliente.getReservations().size(), cliente));
+        }
+        
+        return lista;
     }
     
 }

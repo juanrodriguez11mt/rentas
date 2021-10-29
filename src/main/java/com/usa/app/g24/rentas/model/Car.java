@@ -52,9 +52,21 @@ public class Car implements Serializable {
     @JsonIgnoreProperties({"car", "messages"})
     private List<Reservation> reservations;
 
+    /**
+     *
+     */
     public Car() {
     }
 
+    /**
+     *
+     * @param idCar
+     * @param name
+     * @param brand
+     * @param description
+     * @param year
+     * @param gama
+     */
     public Car(Integer idCar, String name, String brand, String description, Integer year, Gama gama) {
         this.idCar = idCar;
         this.name = name;
@@ -64,66 +76,130 @@ public class Car implements Serializable {
         this.gama = gama;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdCar() {
         return idCar;
     }
 
+    /**
+     *
+     * @param idCar
+     */
     public void setIdCar(Integer idCar) {
         this.idCar = idCar;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBrand() {
         return brand;
     }
 
+    /**
+     *
+     * @param brand
+     */
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getYear() {
         return year;
     }
 
+    /**
+     *
+     * @param year
+     */
     public void setYear(Integer year) {
         this.year = year;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gama getGama() {
         return gama;
     }
 
+    /**
+     *
+     * @param gama
+     */
     public void setGama(Gama gama) {
         this.gama = gama;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Message> getMessages() {
         return messages;
     }
 
+    /**
+     *
+     * @param messages
+     */
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Reservation> getReservations() {
         return reservations;
     }
 
+    /**
+     *
+     * @param reservations
+     */
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }

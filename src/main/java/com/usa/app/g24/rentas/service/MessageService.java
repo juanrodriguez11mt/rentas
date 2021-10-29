@@ -25,6 +25,10 @@ public class MessageService {
     @Autowired
     private ClientService clientService;
     
+    /**
+     *
+     * @param request
+     */
     public void guardar(MessageRequest request) {
         Car car = carService.obtenerPorId(request.getCar().getIdCar());
         Client client = clientService.obtenerPorId(request.getClient().getIdClient());

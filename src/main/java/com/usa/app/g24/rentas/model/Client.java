@@ -45,9 +45,20 @@ public class Client implements Serializable {
     @JsonIgnoreProperties({"client"})
     private List<Reservation> reservations;
     
+    /**
+     *
+     */
     public Client() {
     }
 
+    /**
+     *
+     * @param idClient
+     * @param name
+     * @param email
+     * @param password
+     * @param age
+     */
     public Client(Integer idClient, String name, String email, 
             String password, Integer age) {
         this.idClient = idClient;
@@ -57,6 +68,16 @@ public class Client implements Serializable {
         this.age = age;
     }
 
+    /**
+     *
+     * @param idClient
+     * @param name
+     * @param email
+     * @param password
+     * @param age
+     * @param messages
+     * @param reservations
+     */
     public Client(Integer idClient, String name, String email, String password, 
             Integer age, List<Message> messages, List<Reservation> reservations) {
         this.idClient = idClient;
@@ -68,58 +89,114 @@ public class Client implements Serializable {
         this.reservations = reservations;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdClient() {
         return idClient;
     }
 
+    /**
+     *
+     * @param idClient
+     */
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getAge() {
         return age;
     }
 
+    /**
+     *
+     * @param age
+     */
     public void setAge(Integer age) {
         this.age = age;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Message> getMessages() {
         return messages;
     }
 
+    /**
+     *
+     * @param messages
+     */
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Reservation> getReservations() {
         return reservations;
     }
 
+    /**
+     *
+     * @param reservations
+     */
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }

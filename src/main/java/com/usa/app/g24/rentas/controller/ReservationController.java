@@ -1,9 +1,11 @@
 package com.usa.app.g24.rentas.controller;
 
+import com.usa.app.g24.rentas.dto.ReportClientsResponse;
 import com.usa.app.g24.rentas.dto.ReservationRequest;
 import com.usa.app.g24.rentas.model.Reservation;
 import com.usa.app.g24.rentas.service.ReservationService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -102,6 +104,24 @@ public class ReservationController {
             @PathVariable("dateOne") String dateOne, 
             @PathVariable("dateTwo") String dateTwo) {
         return service.getReservationsPeriod(dateOne, dateTwo);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    @GetMapping("report-status")
+    public Map<String, Integer> getReservationsStatus() {
+        return service.getReservationStatus();
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    @GetMapping("report-clients")
+    public List<ReportClientsResponse> getReportClients() {
+        return service.getReportClients();
     }
     
 }

@@ -51,7 +51,7 @@ public class GamaService {
         }
         
         if (!gama.getCars().isEmpty()) {
-            throw new Exception ("La gama carros relacionados");
+            throw new Exception ("La gama tiene carros relacionados");
         }
         
         gamaRepository.delete(gama);

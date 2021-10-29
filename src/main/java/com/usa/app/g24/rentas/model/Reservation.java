@@ -50,9 +50,22 @@ public class Reservation implements Serializable {
     @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
     private Score score;
 
+    /**
+     *
+     */
     public Reservation() {
     }
 
+    /**
+     *
+     * @param idReservation
+     * @param startDate
+     * @param devolutionDate
+     * @param status
+     * @param car
+     * @param client
+     * @param score
+     */
     public Reservation(Integer idReservation, Date startDate, Date devolutionDate,
             String status, Car car, Client client, Score score) {
         this.idReservation = idReservation;
@@ -64,58 +77,114 @@ public class Reservation implements Serializable {
         this.score = score;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdReservation() {
         return idReservation;
     }
 
+    /**
+     *
+     * @param idReservation
+     */
     public void setIdReservation(Integer idReservation) {
         this.idReservation = idReservation;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getStartDate() {
         return startDate;
     }
 
+    /**
+     *
+     * @param startDate
+     */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDevolutionDate() {
         return devolutionDate;
     }
 
+    /**
+     *
+     * @param devolutionDate
+     */
     public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public Car getCar() {
         return car;
     }
 
+    /**
+     *
+     * @param car
+     */
     public void setCar(Car car) {
         this.car = car;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     *
+     * @param client
+     */
     public void setClient(Client client) {
         this.client = client;
     }
 
+    /**
+     *
+     * @return
+     */
     public Score getScore() {
         return score;
     }
 
+    /**
+     *
+     * @param score
+     */
     public void setScore(Score score) {
         this.score = score;
     }

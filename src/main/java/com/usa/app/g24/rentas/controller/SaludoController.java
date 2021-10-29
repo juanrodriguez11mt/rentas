@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("saludo")
 public class SaludoController {
     
+    /**
+     *
+     * @return
+     */
     @GetMapping("hola")
     public String saludar() {
         return "<h1>Hola Mundo</h1>";

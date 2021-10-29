@@ -38,10 +38,20 @@ public class Message implements Serializable {
     @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
     
+    /**
+     *
+     */
     public Message() {
         
     }
 
+    /**
+     *
+     * @param idMessage
+     * @param messageText
+     * @param car
+     * @param client
+     */
     public Message(Integer idMessage, String messageText, Car car, Client client) {
         this.idMessage = idMessage;
         this.messageText = messageText;
@@ -49,34 +59,66 @@ public class Message implements Serializable {
         this.client = client;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdMessage() {
         return idMessage;
     }
 
+    /**
+     *
+     * @param idMessage
+     */
     public void setIdMessage(Integer idMessage) {
         this.idMessage = idMessage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMessageText() {
         return messageText;
     }
 
+    /**
+     *
+     * @param messageText
+     */
     public void setMessageText(String messageText) {
         this.messageText = messageText;
     }
 
+    /**
+     *
+     * @return
+     */
     public Car getCar() {
         return car;
     }
 
+    /**
+     *
+     * @param car
+     */
     public void setCar(Car car) {
         this.car = car;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     *
+     * @param client
+     */
     public void setClient(Client client) {
         this.client = client;
     }

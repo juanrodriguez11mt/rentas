@@ -11,6 +11,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends CrudRepository <Admin, Integer> {
     
+    /**
+     *
+     * @param email
+     * @return
+     */
     Admin findByEmail(String email);
     
 }
