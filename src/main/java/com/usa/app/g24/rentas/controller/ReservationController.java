@@ -1,6 +1,7 @@
 package com.usa.app.g24.rentas.controller;
 
 import com.usa.app.g24.rentas.dto.ReportClientsResponse;
+import com.usa.app.g24.rentas.dto.ReportStatusResponse;
 import com.usa.app.g24.rentas.dto.ReservationRequest;
 import com.usa.app.g24.rentas.model.Reservation;
 import com.usa.app.g24.rentas.service.ReservationService;
@@ -111,7 +112,7 @@ public class ReservationController {
      * @return 
      */
     @GetMapping("report-status")
-    public Map<String, Integer> getReservationsStatus() {
+    public ReportStatusResponse getReservationsStatus() {
         return service.getReservationStatus();
     }
     

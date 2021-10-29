@@ -1,6 +1,7 @@
 package com.usa.app.g24.rentas.service;
 
 import com.usa.app.g24.rentas.dto.ReportClientsResponse;
+import com.usa.app.g24.rentas.dto.ReportStatusResponse;
 import com.usa.app.g24.rentas.dto.ReservationRequest;
 import com.usa.app.g24.rentas.model.Car;
 import com.usa.app.g24.rentas.model.Client;
@@ -10,9 +11,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -141,19 +140,23 @@ public class ReservationService {
      * 
      * @return 
      */
-    public Map<String, Integer> getReservationStatus() {
-        Map<String, Integer> reporte = new HashMap<>();
-        reporte.put("cancelled", 0);
-        reporte.put("completed", 0);
-        
+    public ReportStatusResponse getReservationStatus() {
+        ReportStatusResponse reporte = new ReportStatusResponse(0, 0);
         List<Object[]> lista = this.repository.getReservationStatus();
         
         for (Object[] fila : lista) {
             Long total = (Long) fila[0];
             String estado = (String) fila[1];
             
-            if (reporte.containsKey(estado)) {
-                reporte.replace(estado, total.intValue());
+            switch(estado) {
+                case "cancelled":
+                    reporte.setCancelled(total.intValue());
+                    break;
+                case "completed":
+                    reporte.setCompleted(total.intValue());
+                    break;
+                default:
+                    break;
             }
         }
         
