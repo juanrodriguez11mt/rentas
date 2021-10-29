@@ -40,7 +40,7 @@ public class Car implements Serializable {
     private String description;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idGama", nullable = false)
+    @JoinColumn(name = "idGama", nullable = true)
     @JsonIgnoreProperties("cars")
     private Gama gama;
     
