@@ -6,7 +6,6 @@ import com.usa.app.g24.rentas.dto.ReservationRequest;
 import com.usa.app.g24.rentas.model.Reservation;
 import com.usa.app.g24.rentas.service.ReservationService;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
