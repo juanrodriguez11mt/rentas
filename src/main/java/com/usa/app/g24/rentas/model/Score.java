@@ -2,8 +2,10 @@ package com.usa.app.g24.rentas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +32,7 @@ public class Score implements Serializable {
     @Column(name = "stars", precision = 1, scale = 1, nullable = false)
     private Integer stars;
     
-    @OneToOne
+    @OneToOne(orphanRemoval = false)
     @JoinColumn(name = "idReservation", updatable = false, nullable = false)
     @JsonIgnoreProperties("score")
     private Reservation reservation;

@@ -32,10 +32,6 @@ public class CarService {
         if (request.getGama() != null && request.getGama().getIdGama() != null)
             gama = gamaService.obtenerPorId(request.getGama().getIdGama());
         
-        //if (gama == null) {
-            //throw new Exception ("El carro debe tener una gama dispobible");
-        //}
-        
         Car car = new Car(null, request.getName(), request.getBrand(), 
                 request.getDescription(), request.getYear(), gama);
         

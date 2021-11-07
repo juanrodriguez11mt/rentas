@@ -42,7 +42,7 @@ public class ReservationService {
         Car car = carService.obtenerPorId(request.getCar().getIdCar());
         Client client = clientService.obtenerPorId(request.getClient().getIdClient());
         
-        String status = "crated";
+        String status = "created";
         
         if (request.getStatus() != null && !request.getStatus().isEmpty()) {
             status = request.getStatus();
@@ -73,7 +73,10 @@ public class ReservationService {
             throw new Exception ("El elemento no existe");
         }
         
-        scoreService.eliminar(entity.getScore().getIdScore());
+        if (entity.getScore() != null 
+                && entity.getScore().getIdScore() != null) {
+            scoreService.eliminar(entity.getScore().getIdScore());
+        }
         
         this.repository.delete(entity);
     }
@@ -100,6 +103,7 @@ public class ReservationService {
         
         entity.setDevolutionDate(fromLocalDateToDate(request.getDevolutionDate()));
         entity.setStartDate(fromLocalDateToDate(request.getStartDate()));
+        entity.setStatus(request.getStatus());
         
         repository.save(entity);
     }

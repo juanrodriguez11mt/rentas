@@ -47,7 +47,7 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
     
-    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private Score score;
 
     /**

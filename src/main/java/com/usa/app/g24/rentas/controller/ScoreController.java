@@ -47,7 +47,7 @@ public class ScoreController {
      * @return 
      */
     @GetMapping("all")
-    public List<Score> listaDeGamas() {
+    public List<Score> lista () {
         return service.lista();
     }
     
